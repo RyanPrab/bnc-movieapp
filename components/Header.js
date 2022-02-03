@@ -23,7 +23,7 @@ const MenuContainer = styled.div.attrs(() => ({
   className: `flex flex-row space-x-2 md:space-x-4 items-center`
 }))``;
 
-const Menu = styled.div.attrs(() => ({
+const Menu = styled.a.attrs(() => ({
   className: `text-xs md:text-sm text-gray-700 p-2 md:p-4 font-semibold hover:bg-amber-400 rounded-md`
 }))``;
 
@@ -54,7 +54,7 @@ export default function Header(props) {
             {
               menu[0]?.items?.map((item, index) => {
                 return (
-                  <Link key={index} href={item?.url}>
+                  <Link key={index} href={item?.url} passHref>
                     <Menu>
                       {item?.name}
                     </Menu>

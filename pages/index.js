@@ -6,7 +6,7 @@ import MovieLang from '../assets/lang/movies.json';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
-const Title = styled.div.attrs(() => ({
+const Title = styled.h1.attrs(() => ({
   className: `text-md md:text-lg text-amber-400 font-semibold`
 }))``;
 

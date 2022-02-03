@@ -5,14 +5,16 @@
       "addFavorite": "Add to My Favorite",
       "removeFavorite": "Remove from My Favorite",
       "introTitle": "Newest online platform for movies and TV shows",
-      "introDesc": "Discover great movies and TV shows for your Watchlist"
+      "introDesc": "Discover great movies and TV shows for your Watchlist",
+      "emptyText": "Oops... your watchlist still empty"
     },
     {
       "locale": "id-ID",
       "addFavorite": "Tambah ke Favorit Saya",
       "removeFavorite": "Hapus dari Favorit Saya",
       "introTitle": "Platform online terbaru untuk film dan acara TV",
-      "introDesc": "Temukan film dan acara TV yang bagus untuk Daftar Tontonan Anda"
+      "introDesc": "Temukan film dan acara TV yang bagus untuk Daftar Tontonan Anda",
+      "emptyText":"Oops... daftar tontonan kamu masih kosong"
     }
   ]
 }
