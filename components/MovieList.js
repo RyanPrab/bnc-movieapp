@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
-import { Row, Col, Spin } from 'antd';
+import { Row, Col, Spin, Button } from 'antd';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { StarFilled } from '@ant-design/icons';
 import useWishlistHandler from "../hooks/useWishlistHandler";
-import { Button } from 'antd';
-import MovieLang from '../assets/lang/movies.json'
 import { useRouter } from 'next/router';
 import { LoadingOutlined } from '@ant-design/icons';
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 const Section = styled.div.attrs(() => ({
   className: `container`
@@ -41,10 +38,8 @@ const FavoriteButton = styled(Button)`
 `;
 
 export default function MovieList(props) {
-  const { movies } = props;
+  const { movies, movieLang } = props;
   const { loading, wishlist, addToWishlist, removeWishlist } = useWishlistHandler();
-  const { locale } = useRouter();
-  const movieLang = MovieLang?.lang?.filter(m => m.locale === locale);
   const [hasMore, setHasMore] = useState(true);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
@@ -114,7 +109,7 @@ export default function MovieList(props) {
                     }}
                     disabled={loading}
                   >
-                    {!exists ? (`${movieLang[0].addFavorite}`) : (`${movieLang[0].removeFavorite}`)}
+                    {!exists ? (`${movieLang.addFavorite}`) : (`${movieLang.removeFavorite}`)}
                     {loading && (
                       spinner
                     )}
