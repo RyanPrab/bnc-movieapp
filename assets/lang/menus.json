@@ -1,0 +1,30 @@
+{
+  "posts": [
+    {
+      "locale": "en-US",
+      "menu" : [
+        {
+          "name": "Home",
+          "url": "/"
+        },
+        {
+          "name": "My Favorite",
+          "url": "/my-favorite"
+        }
+      ]
+    },
+    {
+      "locale": "id-ID",
+      "menu" : [
+        {
+          "name": "Beranda",
+          "url": "/"
+        },
+        {
+          "name": "Favorit Saya",
+          "url": "/my-favorite"
+        }
+      ]
+    }
+  ]
+}
