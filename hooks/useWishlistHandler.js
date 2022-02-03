@@ -27,7 +27,7 @@ export default function useWishlistHandler() {
       for (let i = 0; i < wishlist.length; i++) {
         const movie = wishlist[i];
 
-        if (movie.imdbRating === item.imdbRating) {
+        if (movie.id === item.id) {
           index = i;
           break;
         }

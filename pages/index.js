@@ -15,7 +15,7 @@ export default function Home(props) {
         </Head>
 
         <div className="flex flex-col items-center flex-1 flex-shrink-0">
-          <MovieList movies={movies}/>
+          <MovieList movies={movies?.data}/>
         </div>
       </div>
     </Layout>

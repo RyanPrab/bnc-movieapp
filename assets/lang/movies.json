@@ -1,0 +1,14 @@
+{
+  "lang": [
+    {
+      "locale": "en-US",
+      "addFavorite": "Add to My Favorite",
+      "removeFavorite": "Remove from My Favorite"
+    },
+    {
+      "locale": "id-ID",
+      "addFavorite": "Tambah ke Favorit Saya",
+      "removeFavorite": "Hapus dari Favorit Saya"
+    }
+  ]
+}
