@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
 import { Row, Col, Spin } from 'antd';
 import styled from 'styled-components';
@@ -9,6 +9,7 @@ import { Button } from 'antd';
 import MovieLang from '../assets/lang/movies.json'
 import { useRouter } from 'next/router';
 import { LoadingOutlined } from '@ant-design/icons';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const Section = styled.div.attrs(() => ({
   className: `container`
@@ -44,14 +45,44 @@ export default function MovieList(props) {
   const { loading, wishlist, addToWishlist, removeWishlist } = useWishlistHandler();
   const { locale } = useRouter();
   const movieLang = MovieLang?.lang?.filter(m => m.locale === locale);
+  const [hasMore, setHasMore] = useState(true);
+  const [limit, setLimit] = useState(10);
+  const [page, setPage] = useState(1);
 
   const spinner = <LoadingOutlined style={{ fontSize: 20 }} spin />;
 
+  const showMoreData = () => {
+    setPage(page + 1);
+    setLimit(limit * page);
+    if (limit >= movies.length) {
+      setHasMore(false);
+    }
+  };
+
+  const isBottom = (el) => {
+    return el.getBoundingClientRect().bottom <= window.innerHeight;
+  };
+
+  useEffect(() => {
+    document.addEventListener('scroll', trackScrolling);
+
+    return () => {
+      document.removeEventListener('scroll', trackScrolling);
+    }
+  });
+
+  const trackScrolling = () => {
+    const wrappedElement = document.getElementById('movie-list');
+    if (isBottom(wrappedElement)) {
+      showMoreData();
+    }
+  };
+
   return (
-    <Section>
+    <Section id='movie-list'>
       <Row gutter={[20,8]} align="center">
         {
-          movies?.slice(0, 10).map((movie, index) => {
+          movies?.slice(0, limit).map((movie, index) => {
             const exists = wishlist?.find(w => w.id === movie?.id);
             return (
               <Column xs={12} md={8} xl={6} key={index} align="center">
