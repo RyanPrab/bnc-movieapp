@@ -6,7 +6,7 @@ const FixedContainer = styled.div.attrs(() => ({
   className: `fixed top-0 inset-x-0`
 }))`
   top: 0;
-  z-index: 30;
+  z-index: 10;
 `;
 
 const PageContainer = styled.div.attrs(() => ({
