@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { StarFilled } from '@ant-design/icons';
 import useWishlistHandler from "../hooks/useWishlistHandler";
-import { useRouter } from 'next/router';
 import { LoadingOutlined } from '@ant-design/icons';
 
 const Section = styled.div.attrs(() => ({
@@ -22,6 +21,7 @@ const Column = styled(Col)`
   border-width: 2px;
   border-radius: 15px;
   margin: 0 10px 0 0;
+  cursor: pointer;
 `;
 
 const MovieInfo = styled(Col)`
@@ -75,12 +75,17 @@ export default function MovieList(props) {
 
   return (
     <Section id='movie-list'>
-      <Row gutter={[20,8]} align="center">
+      <Row gutter={[20,8]} justify="center">
         {
           movies?.slice(0, limit).map((movie, index) => {
             const exists = wishlist?.find(w => w.id === movie?.id);
+            const urlMovie = `/detail/${movie.id}`;
             return (
-              <Column xs={12} md={8} xl={6} key={index} align="center">
+              <Column xs={12} md={8} xl={6}
+                key={index}
+                justify="center"
+                onClick={() => location.href = urlMovie}
+              >
                 <ImageWrapper>
                   <Image
                     className="rounded-md"
@@ -100,7 +105,9 @@ export default function MovieList(props) {
                     type='primary'
                     shape='round'
                     danger={exists}
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
                       if (exists) {
                         removeWishlist(movie)
                       } else {
